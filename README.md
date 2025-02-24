@@ -1,31 +1,26 @@
-# Node.js Hello World
+# FAA Advisory Serverless Functions
 
-Simple Node.js + Vercel example that returns a "Hello World" response.
+A serverless API that fetches and processes FAA (Federal Aviation Administration) advisories related to SpaceX operations, including Starship and Starlink.
 
-## How to Use
+## Features
 
-You can choose from one of the following two methods to use this repository:
+- Automatically fetches new advisories every 5 minutes from CADENA OIS
+- Filters for SpaceX-related advisories (Starship, Starlink)
+- Parses complex date/time formats from advisory details
+- Stores processed advisories in MongoDB
+- Provides REST API endpoints for retrieving advisories
 
-### One-Click Deploy
+## API Endpoints
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+### GET /spacex/advisories
+Retrieves all stored SpaceX-related advisories from the database.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/examples/tree/main/solutions/node-hello-world&project-name=node-hello-world&repository-name=node-hello-world)
+### POST /spacex/fetch-new-advisories
+Manually triggers a fetch of new advisories from CADENA OIS. This endpoint is also called automatically every 5 minutes via Vercel Cron Jobs.
 
-### Clone and Deploy
+## Technical Details
 
-```bash
-git clone https://github.com/vercel/examples/tree/main/solutions/node-hello-world
-```
-
-Install the Vercel CLI:
-
-```bash
-npm i -g vercel
-```
-
-Then run the app at the root of the repository:
-
-```bash
-vercel dev
-```
+- Built with TypeScript and Vercel Serverless Functions
+- Uses MongoDB for data storage
+- Implements CORS for cross-origin requests
+- Includes sophisticated parsing for various date/time formats in advisory details

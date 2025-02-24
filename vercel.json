@@ -1,0 +1,8 @@
+{
+    "crons": [
+      {
+        "path": "/spacex/fetch-new-advisories",
+        "schedule": "0 */5 * * * *"
+      }
+    ]
+  }
