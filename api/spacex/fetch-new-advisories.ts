@@ -205,8 +205,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const client = new MongoClient(mongoUri);
   try {
     await client.connect();
-    const db = client.db('advisories_db');
-    const collection = db.collection('starship_advisories');
+    const db = client.db('danielmillar');
+    const collection = db.collection('faa_advisories');
 
     if (req.method === 'POST') {
       // Fetch and process advisories
